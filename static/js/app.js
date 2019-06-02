@@ -19,24 +19,26 @@ d3.json("/names").then((sampleNames) => {
   buildMetadata(firstSample);
 });
 
-
-
-
+/**
+ * Display the sample metadata as well as generate gauge plot for selected sample ID
+ * @param {*} sample sample ID
+ */
 function buildMetadata(sample) {
 
-  // Use `d3.json` to fetch the metadata for a sample
-  let metaSelector = d3.select("#sample-metadata");
   // Use d3 to select the panel with id of `#sample-metadata`
   d3.json(`/metadata/${sample}`).then((d) => {
+
+  // .......... Metadata ..........//    
     // Use `.html("") to clear any existing metadata
-    metaSelector.html("");
+    d3.select("#sample-metadata").html("");
     // Use `Object.entries` to add each key and value pair to the panel
     Object.entries(d).forEach(([k, v]) => {
-      metaSelector
+      d3.select("#sample-metadata")
         .append('div')
         .text(`${k}: ${v}`);
     });
 
+    // .......... Gauge plot .......... //
     // "Speed (level)", "Meter point (degrees)", "pointer (radius)", and "Radians" to calculate "x" and "y" for gauge plot
     let level = parseInt(d.WFREQ) * 18;
     let degrees = 180 - level;
@@ -49,6 +51,7 @@ function buildMetadata(sample) {
 
     // Path
     let mainPath = "M -.0 -0.05 L .0 0.05 L ";
+    if (d.FREQ === 5) mainPath = "M -.05 -0.01 L .05 0.01 L ";  // Not working?
     let pathX = String(x);
     let space = " ";
     let pathY = String(y);
@@ -109,32 +112,34 @@ function buildMetadata(sample) {
   });
 }
 
+/**
+ * Generate pie and bubble plot for selected sample ID
+ * @param {*} sample sample ID
+ */
 function buildDataCharts(sample) {
   
   d3.json(`/samples/${sample}`).then((d) => {
     
+    // Variables obtained from "app.py" to generate the plots
     let sampleValues = d.sample_values;
     let otuIds = d.otu_ids;
     let otuLabels = d.otu_labels;
 
-    // Pie plot
+    // .......... Pie plot ..........//
     let tracePie = {
       values: sampleValues.slice(0, 10),
       labels: otuIds.slice(0, 10),
       type: "pie",
       hovertext: otuLabels.slice(0, 10)
     };
-
     let layoutPie = {
       // <strong></strong> does not work here
       title: "<b>Belly Button OTUs - Pie Chart</b><br>Up to 10 most prevalent species"
     };
-
     let dataPie = [tracePie];
-
     Plotly.newPlot("pie", dataPie, layoutPie);
 
-    // Bubble plot
+    // .......... Bubble plot ..........//
     let traceBub = {
       x: otuIds,
       y: sampleValues,
@@ -145,21 +150,23 @@ function buildDataCharts(sample) {
       },
       text: otuLabels
     };
-
     let layoutBub = {
       // <strong></strong> does not work here
       title: "<b>Belly Button OTUs - Bubble Chart</b><br>Up to 10 most prevalent species"
     };
-
     let dataBub = [traceBub];
-
     Plotly.newPlot("bubble", dataBub, layoutBub);
 
   });
 }
 
+/**
+ * Convert "optionValue" to sample ID and pass it to "buildDataCharts()" and "buildMetadata()"
+ * @param {*} optionValue Retrieved from index.html >> select >> onchange='optionChanged(this.value)'
+ */
 function optionChanged(optionValue) {
 
+  // Remove "BB_" from "optionValue" and change its data type to numeric
   newSample = parseInt(optionValue.replace("BB_", ""));
   // Fetch new data each time a new sample is selected
   buildDataCharts(newSample);
