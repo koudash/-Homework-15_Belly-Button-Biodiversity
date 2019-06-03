@@ -7,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Flask Plotlyjs Example</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Local style CSS -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">  
   <!-- Avoid fake favicon requests -->
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
@@ -16,21 +18,22 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h1>Belly Button Biodiversity Dashboard</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
+        <p><strong>Interactive-Visualizations-Dashboards HW by Lei Kang</strong></p>
+        <h1><strong>Belly Button Biodiversity Dashboard</strong></h1>
+        <h5>Use the interactive charts below to explore the dataset</h5>
       </div>
     </div>
     <div class="row">
       <div class="col-md-2">
-        <div class="well">
-          <h5><strong>SELECT Sample:</strong></h5>
-          <select class='custom-select' id="selDataset" onchange="optionChanged(this.value)"></select>
+        <div class="well mb-4 p-3">
+          <h6><strong>SELECT Sample:</strong></h6>
+          <select class='custom-select custom-select-sm' id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
         <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Sample MetaData</h3>
+          <div class="panel-heading text-center text-white px-2 pt-2 pb-1">
+            <h6 class="panel-title"><strong>Sample MetaData</strong></h6>
           </div>
-          <div id="sample-metadata" class="panel-body"></div>
+          <div id="sample-metadata" class="panel-body font-weight-bold"></div>
         </div>
       </div>
       <div class="col-md-5">

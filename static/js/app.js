@@ -35,6 +35,7 @@ function buildMetadata(sample) {
     Object.entries(d).forEach(([k, v]) => {
       d3.select("#sample-metadata")
         .append('div')
+        .attr('class', 'p-2')
         .text(`${k}: ${v}`);
     });
 
@@ -151,7 +152,13 @@ function buildDataCharts(sample) {
     };
     let layoutBub = {
       // <strong></strong> does not work here
-      title: "<b>Belly Button OTUs - Bubble Chart</b><br>Up to 10 most prevalent species"
+      title: "<b>Belly Button OTUs - Bubble Chart</b><br>All detected species",
+      xaxis: {
+        title: "OTU ID"
+      },
+      yaxis: {
+        title: "OTU Counts"
+      }
     };
     let dataBub = [traceBub];
     Plotly.newPlot("bubble", dataBub, layoutBub);
