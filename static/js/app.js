@@ -52,7 +52,8 @@ function buildMetadata(sample) {
 
     // Path
     let mainPath = "M -.0 -0.05 L .0 0.05 L ";
-    if (d.FREQ === 5) mainPath = "M -.05 -0.01 L .05 0.01 L ";  // Not working?
+    if (d.WFREQ == 5) mainPath = "M -.05 -0.01 L .05 0.01 L ";  // change the path when pointer is at '5'
+    
     let pathX = String(x);
     let space = " ";
     let pathY = String(y);
