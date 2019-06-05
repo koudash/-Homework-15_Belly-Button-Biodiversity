@@ -46,19 +46,17 @@ function buildMetadata(sample) {
     let radius = .5;
     let radians = degrees * Math.PI / 180;
 
-    // Calculate "x" and "y" for gauge plot
-    let x = radius * Math.cos(radians);
-    let y = radius * Math.sin(radians);
+    // Calculate "x" and "y" for "A", "B", and "C" vertices of pointer triangle in gauge plot
+    // https://com2m.de/blog/technology/gauge-charts-with-plotly/
+    let xA = 0.05 * Math.cos((degrees - 90) * Math.PI / 180);
+    let yA = 0.05 * Math.sin((degrees - 90) * Math.PI / 180);    
+    let xB = -xA;
+    let yB = -yA;    
+    let xC = radius * Math.cos(radians);
+    let yC = radius * Math.sin(radians);
 
     // Path
-    let mainPath = "M -.0 -0.05 L .0 0.05 L ";
-    if (d.WFREQ == 5) mainPath = "M -.05 -0.01 L .05 0.01 L ";  // change the path when pointer is at '5'
-    
-    let pathX = String(x);
-    let space = " ";
-    let pathY = String(y);
-    let pathEnd = ' Z';
-    let path = mainPath.concat(pathX,space,pathY,pathEnd);
+    let path = `M ${xA} ${yA} L ${xB} ${yB} L ${xC} ${yC} Z`;
 
     let data = [
     {
