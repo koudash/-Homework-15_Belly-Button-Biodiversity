@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Flask Plotlyjs Example</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Belly Button Biodiversity</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Local style CSS -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">  
   <!-- Favicon -->
   <!-- Downloaded from http://pluspng.com/png-147963.html -->
   <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}">
 </head>
-
 <body>
-
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <p><strong>Interactive-Visualizations-Dashboards HW by Lei Kang</strong></p>
+        <p><strong>Designed by Lei Kang</strong></p>
         <h1><strong>Belly Button Biodiversity Dashboard</strong></h1>
         <h5>Use the interactive charts below to explore the dataset</h5>
       </div>
@@ -50,11 +48,8 @@
       <div id="bubble"></div>
     </div>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-
 </body>
-
 </html>
