@@ -4,4 +4,6 @@
 
 <h3><strong>METHODOLOGY</strong></h3>
 <p>Flask app functions as a server to receive request from index.html (customer interface), set up connections to database (sqlite), retrieve data from database, process data, and send back data of interest in response to "d3.json()" calls from javascript file. Data are then processed by javascript and eventually displayed in index.html as mega data box as well as in the form of 'pie', 'gauge', and 'bubble' charts plotted by Plotly.js.</p>
-<p>Such application is deployed on Heroku and can be accessed <a href="https://koudash-biodiversity.herokuapp.com/">here</a>.
+<p>Such application is deployed on Heroku and can be accessed <a href="https://koudash-biodiversity.herokuapp.com/">here</a>.  
+<p>A screenshot is posted below.</p>
+<img src="./static/images/HTML Screenshot.png" alt="HTML Screenshot">
