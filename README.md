@@ -1,4 +1,4 @@
-# Homework-15_Belly-Button-Biodiversity
+Belly-Button-Biodiversity
 <h3><strong>INTERACTIVE DASHBOARD</strong></h3>
 <p>The deployment of an interactive dashboard for the abundance of different microbial species (technical term: operational taxonomic units, <strong>OTUs</strong>) in human belly buttons was based on the <a href="./db">dataset</a> retrieved from the <a href="http://robdunnlab.com/projects/belly-button-biodiversity/"><i>Belly Button Biodiversity</i></a> study launched in January 2011 by Dr. Robert R. Dunn from North Carolina State University.</p><br/>
 
